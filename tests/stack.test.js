@@ -17,3 +17,13 @@ test('peek on stack with two or more elements returns the top element', () => {
     expect(stack.peek()).toBeDefined();
     expect(stack.peek()).toBe(42);
 });
+
+//Testar så att pop faktiskt tar bort det översta elementet
+test('pop should remove the top item so peek gives next one', () => {
+    stack.push('first');
+    stack.push('second');
+    stack.pop();
+
+    //'first' borde vara det enda som finns kvar
+    expect(stack.peek()).toBe('first');
+})
