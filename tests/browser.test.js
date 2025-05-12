@@ -32,3 +32,18 @@ describe('Clicking "Pusha till stacken"', () => {
         await alert.accept();
     });
 });
+
+test('Pop visar rätt alert-text', async () => {
+    await driver.findElement(By.id('push')).click(); //Push knappen "Pusha till stacken" klickas på
+    const pushAlert = await driver.switchTo().alert();
+    await pushAlert.sendKeys("Tonfisk"); //Svarar på prompten med strängen Tonfisk
+    await pushAlert.accept();
+
+    await driver.findElement(By.id('pop')).click(); //Tar bort översta värdet i stacken
+    const popAlert = await driver.switchTo().alert();
+    const popText = await popAlert.getText();
+    await popAlert.accept();
+
+    // Förväntar sig strängen Torsk, men får istället värdet Tonfisk och gör så att testet FAIL:ar
+    expect(popText).toBe("Torsk");
+});

@@ -16,7 +16,3 @@ exports.pop = function () {
 exports.peek = function () {
     return _.last(stack);
 }
-
-exports.pop = function () {
-    return stack.pop(); // Tar bort det översta elementet från stacken och returnerar det
-}
