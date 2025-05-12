@@ -18,5 +18,5 @@ exports.peek = function () {
 }
 
 exports.pop = function () {
-    return _.last(stack); // Ett medvetet FEL, det tar inte bort elementet
+    return stack.pop(); // Tar bort det översta elementet från stacken och returnerar det
 }
